@@ -1,0 +1,84 @@
+{
+  "name": "Sin.web4",
+  "projectType": "application",
+  "sourceRoot": "apps/Sin.web4/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "baseHref" : "/~s335061/",
+        "outputPath": "dist/apps/Sin.web4",
+        "index": "apps/Sin.web4/src/index.html",
+        "main": "apps/Sin.web4/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/Sin.web4/tsconfig.app.json",
+        "assets": [
+          "apps/Sin.web4/src/favicon.ico",
+          "apps/Sin.web4/src/assets"
+        ],
+        "styles": [
+          "apps/Sin.web4/scss/custom.scss"
+        ],
+        "scripts": ["./node_modules/jquery/dist/jquery.min.js"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "Sin.web4:build:production"
+        },
+        "development": {
+          "browserTarget": "Sin.web4:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "Sin.web4:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/Sin.web4/tsconfig.spec.json",
+        "assets": [
+          "apps/Sin.web4/src/favicon.ico",
+          "apps/Sin.web4/src/assets"
+        ],
+        "styles": ["apps/Sin.we b4/src/styles.css"],
+        "scripts": []
+      }
+    }
+  }
+}
